@@ -115,7 +115,7 @@ def main():
     resultado = crew.kickoff(inputs={"sector": setor})
 
     texto = resultado.result if hasattr(resultado, "result") else str(resultado)
-    path = "L:/Documentos/Udemy/CrewAI/CrewAI_Udemy/analise_mercado/projeto_final/relatorios/" + nome_arquivo
+    path = "L:/Documentos/Udemy/CrewAI/CrewAI_Udemy/analise_mercado/projeto_final/relatorios/" + nome_arquivo + ".pdf"
     salvar_pdf(texto, path)
 
 if __name__ == "__main__":
