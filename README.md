@@ -39,3 +39,12 @@ Exemplo: "Trabalhou na Wall Street por 10anos."
         - Exemplo: APIs, Bancos de Dados, modelos de linguagem, bibliotecas de código;
 
 - Orquestração e Conclusão: Agentes, tarefas e ferramentas interagem para formar uma Crew. O orquestrador agenda e executa as tarefas. 
+
+### Criando um ipykernel (Kernel para rodar Jupyter Notebook no VS Code) 
+```bash
+poetry run python -m ipykernel install --user --name=analise-mercado --display-name "Poetry - Análise de Mercado"
+```
+
+### Para salvar o relatório em formato PDF 
+
+Instale o wkhtmltopdf a partir do site: https://wkhtmltopdf.org/downloads.html
