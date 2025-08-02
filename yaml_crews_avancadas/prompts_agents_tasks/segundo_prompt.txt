@@ -1,0 +1,13 @@
+Descreva o sistema em termos de agentes e tarefas da seguinte maneira:
+
+Cada cargo representa um agente. Cada agente é caracterizado por três elementos:
+
+- role: Define a responsabilidade do agente dentro do sistema, especificando a tarefa que ele deve realizar.
+- goal: Estabelece o propósito principal do agente, ou seja, o resultado que se espera que ele obtenha ao executar sua função.
+- backstory: Fornece um contexto que influencia a personalidade e a abordagem do agente em suas tarefas.
+
+Cada tarefa é descrita por três elementos:
+
+- description: Detalha as ações específicas que o agente deve executar para realizar a tarefa.
+- expected_output: Define o resultado esperado da tarefa, que é usado para avaliar se a execução foi bem-sucedida.
+- agent: Indica qual agente é designado para executar a tarefa.

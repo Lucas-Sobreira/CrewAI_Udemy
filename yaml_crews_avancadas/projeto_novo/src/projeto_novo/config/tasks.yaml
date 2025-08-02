@@ -1,0 +1,130 @@
+definir_escopo_do_sistema:
+  description: >
+    Levantar os objetivos do sistema de múltiplos agentes, identificar o problema a ser resolvido, os usuários finais e os resultados esperados.
+    Sistema que deve ser criado: {definicao_sistema}
+  expected_output: >
+    Documento com o escopo do sistema, principais requisitos e lista preliminar de agentes.
+  agent: product_owner
+
+modelar_agentes:
+  description: >
+    Especificar os agentes necessários, incluindo seus papéis (role), objetivos (goal) e histórico/contexto (backstory).
+  expected_output: >
+    Arquivo agents.yaml contendo a definição completa dos agentes envolvidos no sistema.
+    Crie o arquivo agents.yaml com as seguintes formatações: 
+    nome_do_agente:
+      role: >
+        role aqui
+      goal: >
+        goal aqui
+      backstory: >
+        backstory aqui
+
+    Obs: Os agentes devem ter um nome em snake case
+
+  agent: arquiteto_de_solucoes
+
+estruturar_tarefas:
+  description: >
+    Mapear as tarefas essenciais para alcançar o objetivo do sistema, atribuindo cada uma a um agente responsável.
+  expected_output: >
+    Arquivo tasks.yaml com todas as tarefas descritas, incluindo responsável, entrada e saída esperada.
+    Crie o arquivo tasks.yaml com as seguintes formatações: 
+    nome_da_task:
+      description: >
+        description aqui
+      expected_output: >
+        expected_output aqui
+      agent: agent aqui
+
+    Obs: As tasks devem ter um nome em snake case
+  agent: analista_de_processos
+
+desenvolver_orquestrador:
+  description: >
+    Implementar o script Python que carrega os arquivos de agentes e tarefas, instancia os objetos da CrewAI e define a lógica de execução.
+  expected_output: >
+    Arquivo crew.py funcional, que conecta os agentes às suas tarefas e executa a crew.
+    O arquivo deve seguir a formatação: 
+    from crewai import Agent, Crew, Process, Task
+    from crewai.project import CrewBase, agent, crew, task
+    from crewai.agents.agent_builder.base_agent import BaseAgent
+    from typing import List
+    # If you want to run a snippet of code before or after the crew starts,
+    # you can use the @before_kickoff and @after_kickoff decorators
+    # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+
+    import agentops
+    import os
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    AGENTOPS_API_KEY=os.getenv("AGENTOPS_API_KEY")
+    agentops.init(api_key=AGENTOPS_API_KEY)
+
+    @CrewBase
+    class ProjetoNovo():
+        """ProjetoNovo crew"""
+
+        agents: List[BaseAgent]
+        tasks: List[Task]
+
+        # Learn more about YAML configuration files here:
+        # Agents: https://docs.crewai.com/concepts/agents#yaml-configuration-recommended
+        # Tasks: https://docs.crewai.com/concepts/tasks#yaml-configuration-recommended
+        
+        # If you would like to add tools to your agents, you can learn more about it here:
+        # https://docs.crewai.com/concepts/agents#agent-tools
+        @agent
+        def researcher(self) -> Agent:
+            return Agent(
+                config=self.agents_config['researcher'], # type: ignore[index]
+                verbose=True
+            )
+
+        @agent
+        def reporting_analyst(self) -> Agent:
+            return Agent(
+                config=self.agents_config['reporting_analyst'], # type: ignore[index]
+                verbose=True
+            )
+
+        # To learn more about structured task outputs,
+        # task dependencies, and task callbacks, check out the documentation:
+        # https://docs.crewai.com/concepts/tasks#overview-of-a-task
+        @task
+        def research_task(self) -> Task:
+            return Task(
+                config=self.tasks_config['research_task'], # type: ignore[index]
+            )
+
+        @task
+        def reporting_task(self) -> Task:
+            return Task(
+                config=self.tasks_config['reporting_task'], # type: ignore[index]
+                output_file='report.md'
+            )
+
+        @crew
+        def crew(self) -> Crew:
+            """Creates the ProjetoNovo crew"""
+            # To learn how to add knowledge sources to your crew, check out the documentation:
+            # https://docs.crewai.com/concepts/knowledge#what-is-knowledge
+
+            return Crew(
+                agents=self.agents, # Automatically created by the @agent decorator
+                tasks=self.tasks, # Automatically created by the @task decorator
+                process=Process.sequential,
+                verbose=True,
+                # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
+            )
+
+  agent: desenvolvedor_python
+
+validar_sistema:
+  description: >
+    Testar a execução da crew para verificar se todas as tarefas são realizadas conforme esperado e se os arquivos estão consistentes.
+  expected_output: >
+    Relatório de validação com observações e possíveis correções, ou confirmação de que o sistema está pronto para uso.
+  agent: qa_engineer

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "yaml-crews-avancadas"
+version = "0.1.0"
+description = ""
+authors = ["Lucas-Sobreira <lucas-andrade2011@live.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+crewai = "^0.152.0"
+crewai-tools = "^0.59.0"
+agentops = "^0.4.19"
+setuptools = "^80.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

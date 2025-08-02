@@ -1,0 +1,11 @@
+Crie o arquivo agents.yaml com as seguintes formatações: 
+
+nome_do_agente:
+  role: >
+    role aqui
+  goal: >
+    goal aqui
+  backstory: >
+    backstory aqui
+
+Obs: Os agentes devem ter um nome em snake case

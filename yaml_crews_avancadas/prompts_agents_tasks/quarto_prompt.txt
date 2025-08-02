@@ -1,0 +1,10 @@
+Crie os arquivos tasks.yaml com as seguintes formatações: 
+
+nome_da_task:
+  description: >
+    description aqui
+  expected_output: >
+    expected_output aqui
+  agent: agent aqui
+
+Obs: As tasks devem ter um nome em snake case

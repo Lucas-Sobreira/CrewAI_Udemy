@@ -1,0 +1,13 @@
+Dado um processo de criação de um sistema de múltiplos agentes com CrewAI, este envolve a elaboração de três arquivos principais: agents.yaml, tasks.yaml e crew.py.
+
+O arquivo agents.yaml tem como função descrever os agentes envolvidos no sistema, especificando seus papéis, capacidades e responsabilidades.
+
+O tasks.yaml define as tarefas a serem executadas, suas descrições, entradas e saídas, bem como a qual agente cada uma está atribuída.
+
+Por fim, o crew.py atua como o componente de orquestração, integrando os agentes e as tarefas definidas, coordenando sua execução de forma lógica e funcional.
+
+Quebre o processo em etapas com cargos e tarefas executados por esses cargos,  para sairmos do ponto inicial ao final.
+
+Ponto inicial: um sistema de crew que gostaríamos de desenvolver
+Ponto final: arquivos agents.yaml, tasks.yaml e crew.py criados
+Número máximo de etapas: 5

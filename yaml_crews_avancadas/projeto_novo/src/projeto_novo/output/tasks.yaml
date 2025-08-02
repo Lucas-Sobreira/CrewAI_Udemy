@@ -1,0 +1,36 @@
+```yaml
+pesquisa_conteudo:
+  description: >
+    Realizar uma busca aprofundada sobre o estado atual e tendências de Inteligência Artificial Generativa, assegurando que o material seja relevante e atualizado.
+  expected_output: >
+    Lista de artigos, livros e recursos relacionados a Inteligência Artificial Generativa com indicação de relevância e atualidade.
+  agent: Agente de Pesquisa
+
+organizacao_topicos:
+  description: >
+    Agrupar e organizar tópicos relevantes que serão abordados no curso, garantindo que os aspectos fundamentais sejam cobertos.
+  expected_output: >
+    Estrutura hierárquica dos tópicos organizados e categorizados conforme sua relevância.
+  agent: Agente de Organização
+
+definicao_escopo:
+  description: >
+    Delimitar claramente os objetivos de aprendizado e o conteúdo que será incluído no curso, alinhando-o às necessidades dos alunos.
+  expected_output: >
+    Documento com objetivos de aprendizado, conteúdos a serem abordados e critérios de avaliação para o curso.
+  agent: Agente de Definição
+
+criacao_material_didatico:
+  description: >
+    Gerar apostilas e materiais educacionais que sejam compreensíveis, atrativos e informativos, atendendo a um padrão de alta qualidade.
+  expected_output: >
+    Material didático formatado e revisado, pronto para uso em sala de aula ou distribuição digital.
+  agent: Agente de Criação
+
+coleta_feedback:
+  description: >
+    Implementar mecanismos de coleta de feedback dos usuários finais para iterar e melhorar o conteúdo e a estrutura do curso.
+  expected_output: >
+    Relatório de feedback consolidado, incluindo sugestões de melhorias e indicadores de satisfação dos usuários.
+  agent: Agente de Feedback
+```

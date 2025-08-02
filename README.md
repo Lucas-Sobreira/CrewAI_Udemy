@@ -3,6 +3,15 @@
 ## Crews 
 Permitem a criação de equipes de agentes autônomos, ou seja, multi agentes. Essas equipes são capazes de alcançar objetivos complexos, simulando equipes do mundo real.
 
+## Tarefas
+São as tarefas que cada um dos Agentes irá ser responsável por atuar. 
+
+### Definições
+
+- Description:É a descrição da tarefa, pode ser escrito em parágrafo único ou utilizar esquema de tópicos;
+- Expected Output: É o resultado da tarefa, a forma como ele pode ser entregue. Podendo usar exemplos para descrever exatamente a forma como se espera o resultado da tarefa;
+- Agent: É o agente responsável pela execução da tarefa;
+
 ## Agentes
 Cada agente é responsável por uma tarefa específica. 
 Como por exemplo:
@@ -81,3 +90,41 @@ Instale o wkhtmltopdf a partir do site: https://wkhtmltopdf.org/downloads.html
     ```bash
     from langchain_community.tools import DuckDuckGoSearchResults
     ```
+
+## Utilizando YAML para criação de Crews Avançadas 
+
+Para criar uma CREW com linha de comando: 
+```bash
+poetry run crewai create new <project_name>
+```
+
+Necessário criar um conta caso ainda não tenha e pegar um token do seu projeto: 
+
+> [!WARNING]
+> Caso você não faça o passo seguinte o seu projeto não irá funcionar!
+
+- site: [agentops.ai](https://app.agentops.ai/)
+
+- Dentro do arquivo <span style="color: orange">"main.py"</span>:  
+    - ~~from projeto_novo.crew import ProjetoNovo~~
+    - from crew import ProjetoNovo
+
+- Dentro do arquivo <span style="color: orange">"crew.py"</span>: 
+```bash
+import agentops
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+AGENTOPS_API_KEY=os.getenv("AGENTOPS_API_KEY")
+agentops.init(api_key=AGENTOPS_API_KEY)
+```    
+
+- No final do arquivo <span style="color: orange">"main.py"</span>, basta chamar a função "run":
+
+```bash
+run()
+``` 
+
+Essa estrutura de pastas e arquivos YAML é algo semelhante a estrutura do DBT, porém com outro foco. Dessa maneira fica mais organizado e profissional, podendo utilizar para diversos projetos e automatizar as mais diversas tarefas!
