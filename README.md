@@ -48,3 +48,36 @@ poetry run python -m ipykernel install --user --name=analise-mercado --display-n
 ### Para salvar o relatório em formato PDF 
 
 Instale o wkhtmltopdf a partir do site: https://wkhtmltopdf.org/downloads.html
+
+-------------------------------
+
+## Projeto Analise de ações Ibovespa
+
+### Criando Tools
+
+- Criando Tools apartir de <span style="color: orange">documentos (.csv)</span> [ Agente 1 - Gerente do Cliente]
+
+    Foi utilizada uma biblioteca para ler os dados e utiliza-los na criação da Crew.
+
+    - CSVSearchTool;
+
+- Criando Tools da <span style="color: orange">Yfinance (Yahoo Finance)</span> [Agente 2 - Analista de Ações]
+
+    Foi utilizada uma biblioteca do próprio CrewAI para criar uma função personalizada para consultar os valores de um "papel" (ticket) utilizando a Yahoo Finance.
+
+    ```bash
+    from crewai.tools import BaseTool
+    ```
+
+- Criando Tools para <span style="color: orange">Pesquisa na Internet</span>
+
+    No caso a pesquisa na Internet foi diretamente relacionada a alguns critérios sobre um "papel" (ticket) que usuário seleciona, para obter resultados como: 
+        
+    - Resumo das notícias sobre o ativo; 
+    - Um "Rating" a respeito de Medo/Ganância das pessoas em adquirir o ativo;
+
+    Para isso foi utilizado o "DuckDuckGo".
+
+    ```bash
+    from langchain_community.tools import DuckDuckGoSearchResults
+    ```

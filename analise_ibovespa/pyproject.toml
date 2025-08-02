@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "analise-mercado"
+version = "0.1.0"
+description = ""
+authors = ["Lucas-Sobreira <lucas-andrade2011@live.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<=3.13"
+crewai = "0.148.0"
+langchain = "^0.3.26"
+langchain-community = "^0.3.27"
+openai = "^1.97.0"
+ipykernel = "^6.30.0"
+jupyter = "^1.1.1"
+python-dotenv = "^1.1.1"
+pdfkit = "^1.0.0"
+markdown = "^3.8.2"
+langchain-openai = "^0.2.1"
+yfinance = "^0.2.65"
+duckduckgo-search = "^8.1.1"
+chromadb = "0.5.23"
+crewai-tools = "^0.58.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
